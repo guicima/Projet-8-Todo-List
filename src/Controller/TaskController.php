@@ -30,6 +30,7 @@ class TaskController extends AbstractController
     public function createAction(Request $request, PersistenceManagerRegistry $doctrine)
     {
         $task = new Task();
+        $task->setUser($this->getUser());
         $form = $this->createForm(TaskType::class, $task);
 
         $form->handleRequest($request);
