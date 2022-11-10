@@ -54,16 +54,22 @@ class TaskController extends AbstractController
      */
     public function editAction(Task $task, Request $request, PersistenceManagerRegistry $doctrine)
     {
-        $form = $this->createForm(TaskType::class, $task);
 
+        $form = $this->createForm(TaskType::class, $task);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $doctrine->getManager()->flush();
 
-            $this->addFlash('success', 'La tâche a bien été modifiée.');
+            if ($task->getUser() == $this->getUser() || $task->getUser() == null && $this->isGranted('ROLE_ADMIN')) {
 
-            return $this->redirectToRoute('task_list');
+                $doctrine->getManager()->flush();
+                $this->addFlash('success', 'La tâche a bien été modifiée.');
+                return $this->redirectToRoute('task_list');
+
+            } else {
+
+                $this->addFlash('error', 'Vous n\'avez pas les droits pour modifier cette tâche.');
+            }
         }
 
         return $this->render('task/edit.html.twig', [
@@ -90,11 +96,18 @@ class TaskController extends AbstractController
      */
     public function deleteTaskAction(Task $task, PersistenceManagerRegistry $doctrine)
     {
-        $em = $doctrine->getManager();
-        $em->remove($task);
-        $em->flush();
+        if ($task->getUser() == $this->getUser() || $task->getUser() == null && $this->isGranted('ROLE_ADMIN')) {
 
-        $this->addFlash('success', 'La tâche a bien été supprimée.');
+            $em = $doctrine->getManager();
+            $em->remove($task);
+            $em->flush();
+            $this->addFlash('success', 'La tâche a bien été supprimée.');
+
+        } else {
+
+            $this->addFlash('error', 'Vous n\'avez pas les droits pour supprimer cette tâche.');
+            
+        }
 
         return $this->redirectToRoute('task_list');
     }
