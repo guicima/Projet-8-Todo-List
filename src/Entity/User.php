@@ -47,6 +47,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $task;
 
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $roles = [];
+
     public function __construct()
     {
         $this->task = new ArrayCollection();
@@ -94,7 +99,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getRoles(): array
     {
-        return array('ROLE_USER');
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+        return array_unique($roles);
     }
 
     public function getUserIdentifier(): string
@@ -132,6 +139,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $task->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }
