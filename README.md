@@ -28,3 +28,8 @@ Start project in local
 ```sh
 symfony serve
 ```
+
+Execute tests
+```sh
+symfony php bin/phpunit --coverage-html coverage
+```
