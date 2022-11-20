@@ -29,7 +29,14 @@ Start project in local
 symfony serve
 ```
 
+### Test the project
 Execute tests
 ```sh
 symfony php bin/phpunit --coverage-html coverage
 ```
+
+## Documentation
+- [Audit de l'application](Documentation/Audit%20de%20l'application.md)
+- [Authentification de l'application](Documentation/Authentification%20de%20l'application.md)
+- [Contribuer au projet](Documentation/Contribuer%20au%20projet.md)
+- [Diagrammes](Documentation/Diagrammes.md)
