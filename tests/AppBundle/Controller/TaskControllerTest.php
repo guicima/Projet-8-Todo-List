@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\App\Controller;
+namespace Tests\AppBundle\Controller;
 
 use App\Entity\User;
 use App\Entity\Task;

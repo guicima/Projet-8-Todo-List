@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\App\Controller;
+namespace Tests\AppBundle\Controller;
 
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -32,13 +32,14 @@ class UserControllerTest extends WebTestCase
         $this->userRepository = $this->doctrine->getRepository(User::class);
     }
 
-    public function loginUser(string $email) {
+    public function loginUser(string $email) 
+    {
         $this->testUser = $this->userRepository->findOneByEmail($email);
         $this->client->loginUser($this->testUser);
     }
 
     public function testListAction()
-    {   
+    {
         $this->loginUser('admin@email.com');
         $this->client->request('GET', '/users');
         $this->assertResponseIsSuccessful();
