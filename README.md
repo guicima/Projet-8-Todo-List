@@ -32,11 +32,11 @@ symfony serve
 ### Test the project
 Execute tests
 ```sh
-symfony php bin/phpunit --coverage-html coverage
+symfony php bin/phpunit --coverage-html code_coverage
 ```
-
+## Contribute to the project
+- [Contributing](CONTRIBUTING.md)
 ## Documentation
-- [Audit de l'application](Documentation/Audit%20de%20l'application.md)
-- [Authentification de l'application](Documentation/Authentification%20de%20l'application.md)
-- [Contribuer au projet](Documentation/Contribuer%20au%20projet.md)
-- [Diagrammes](Documentation/Diagrammes.md)
+- [Audit de l'application](documentation/Audit%20de%20l'application.md)
+- [Authentification de l'application](documentation/Authentification%20de%20l'application.md)
+- [Diagrammes](diagrammes/Diagrammes.md)
