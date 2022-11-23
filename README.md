@@ -1,6 +1,42 @@
-ToDoList
-========
+# ToDoList
+ToDoList is a project to manage a list of tasks to be done
 
-Base du projet #8 : Améliorez un projet existant
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/3fa4fae5d73942168292a3b406047873)](https://www.codacy.com/gh/guicima/Projet-8-Todo-List/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guicima/Projet-8-Todo-List&amp;utm_campaign=Badge_Grade)
 
-https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=guicima_Projet-8-Todo-List&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=guicima_Projet-8-Todo-List)
+
+## Set up the environnement
+### Install dependencies
+
+Install Composer
+[Get Composer](https://getcomposer.org/)
+
+### Start the project
+
+Install composer dependencies
+```sh
+composer install
+```
+
+Load database
+```sh
+php bin/console doctrine:migrations:migrate
+php bin/console doctrine:fixtures:load -n
+```
+
+Start project in local
+```sh
+symfony serve
+```
+
+### Test the project
+Execute tests
+```sh
+symfony php bin/phpunit --coverage-html code_coverage
+```
+## Contribute to the project
+- [Contributing](CONTRIBUTING.md)
+## Documentation
+- [Audit de l'application](documentation/Audit%20de%20l'application.md)
+- [Authentification de l'application](documentation/Authentification%20de%20l'application.md)
+- [Diagrammes](diagrammes/Diagrammes.md)
